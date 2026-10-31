@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -155,6 +156,12 @@ h2 {
 .button.secondary {
   background:rgba(67,49,92,.72);
 }
+
+/* Espaçamento dos botões da página inicial */
+.hero-inner .button {
+  margin:5px;
+}
+
 .card {
   background:linear-gradient(145deg,var(--panel),rgba(35,26,54,.9));
   border:1px solid var(--line);
@@ -291,7 +298,6 @@ h2 {
 .footer .heart { color:var(--pink); }
 .date-note { margin-top:12px; }
 
-/* Contador regressivo do aniversário */
 .countdown-box {
   margin:24px 0;
   padding:22px 16px;
@@ -309,7 +315,6 @@ h2 {
 }
 #countdownMessage { color:var(--pink); margin:10px 0 0; }
 
-/* Janela comemorativa */
 .anniversary-modal {
   position:fixed;
   inset:0;
@@ -383,7 +388,14 @@ h2 {
       <div class="hero-flower">🌷 ✦ 🌸</div>
       <h1>Para você,<span class="names">minha Lym ♡</span></h1>
       <p class="lead">Se o universo fosse infinito, eu ainda escolheria encontrar você. Este cantinho é pequeno perto de tudo o que sinto, mas cada detalhe foi imaginado com carinho por mim, seu Niko.</p>
+
       <a class="button" href="#carta-principal">Abrir minha cartinha ♡</a>
+
+      <!-- NOVO BOTÃO PARA STARS.HTML -->
+      <a class="button secondary" href="stars.html">
+        ✦ Nosso céu de estrelas
+      </a>
+
       <p class="hint">Feito com carinho, estrelinhas e um montão de amor.</p>
     </div>
   </section>
@@ -509,7 +521,6 @@ h2 {
       <div class="eyebrow">nosso dia especial</div>
       <h2>Feliz aniversário de namoro, meu amor 🎂</h2>
 
-      <!-- Contador regressivo até 11 de outubro -->
       <div class="countdown-box" aria-live="polite">
         <p id="countdownTitle">Faltam para nosso aniversário de namoro:</p>
         <div id="countdownDays">Calculando...</div>
@@ -535,7 +546,6 @@ h2 {
   </section>
 </main>
 
-<!-- Janela que aparece todo dia 11 de outubro -->
 <div id="anniversaryModal" class="anniversary-modal hidden" role="dialog" aria-modal="true" aria-labelledby="anniversaryTitle" aria-describedby="anniversaryText">
   <div class="anniversary-dialog">
     <div class="anniversary-emoji" aria-hidden="true">🎂💜🌷</div>
@@ -592,7 +602,7 @@ function updateRelationshipCounter() {
 }
 updateRelationshipCounter();
 
-// Contador regressivo: chega a zero no dia 11 e reinicia no dia seguinte.
+// Contador regressivo do aniversário.
 function updateAnniversaryCountdown() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -660,7 +670,7 @@ document.getElementById("nightButton").addEventListener("click", () => {
     "Beijinho guardado com sucesso no coração. Boa noite, Lym! ♡";
 });
 
-// Mostrar a janela comemorativa todos os anos no dia 11 de outubro.
+// Janela comemorativa no dia 11 de outubro.
 const anniversaryModal = document.getElementById("anniversaryModal");
 const closeAnniversaryModal = document.getElementById("closeAnniversaryModal");
 const currentDate = new Date();
