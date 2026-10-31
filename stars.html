@@ -1,1204 +1,341 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#100b24">
-
-<title>Meu Céu Estrelado ♡ Lym</title>
+<title>Nosso Pequeno Universo ♡</title>
 
 <style>
-:root {
-  --purple:#cbb4ff;
-  --pink:#f5b8e6;
-  --white:#fff8ff;
-  --muted:#d8cce9;
-}
-
 * {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html {
-  scroll-behavior:smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height:100vh;
-  overflow-x:hidden;
-  font-family:"Trebuchet MS",system-ui,sans-serif;
-  color:var(--white);
-  background:#100b24;
-  transition:background 3s ease;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Georgia', serif;
+    color: #fff;
+    background: linear-gradient(135deg, #100c25, #25113b, #111b38);
+    background-size: 300% 300%;
+    animation: backgroundMove 25s ease infinite;
+    text-align: center;
 }
 
-/* FUNDO ANIMADO */
-
-#universe {
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:-3;
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.background-glow {
-  position:fixed;
-  inset:-20%;
-  z-index:-2;
-  pointer-events:none;
-  background:
-    radial-gradient(
-      ellipse at 20% 20%,
-      rgba(117,76,180,.25),
-      transparent 45%
-    ),
-    radial-gradient(
-      ellipse at 80% 70%,
-      rgba(190,95,170,.16),
-      transparent 40%
-    );
-  animation:glowMove 18s ease-in-out infinite alternate;
+#stars {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-@keyframes glowMove {
-  0% {
-    transform:translate(-3%,0) scale(1);
-  }
-  100% {
-    transform:translate(3%,2%) scale(1.15);
-  }
-}
-
-.ambient {
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:linear-gradient(
-    180deg,
-    rgba(10,7,25,.05),
-    rgba(10,7,25,.35)
-  );
-}
-
-/* NAVEGAÇÃO */
-
-.topbar {
-  position:relative;
-  z-index:10;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 7%;
-  background:rgba(13,9,29,.35);
-  border-bottom:1px solid rgba(216,197,255,.12);
-  backdrop-filter:blur(12px);
-}
-
-.brand {
-  color:var(--purple);
-  font-weight:bold;
-  text-decoration:none;
-  letter-spacing:1px;
-}
-
-.back {
-  text-decoration:none;
-  color:var(--muted);
-  font-size:.9rem;
-  transition:.3s;
-}
-
-.back:hover {
-  color:white;
-}
-
-/* CONTEÚDO */
-
-main {
-  width:min(900px,calc(100% - 36px));
-  margin:auto;
-}
-
-.hero {
-  min-height:95vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:55px 0;
-}
-
-/* CORAÇÃO COM FOTO */
-
-.photo-heart {
-  width:175px;
-  height:175px;
-  margin-bottom:30px;
-  position:relative;
-  animation:heartFloat 4s ease-in-out infinite;
-  filter:drop-shadow(0 0 22px rgba(226,156,255,.45));
-}
-
-.photo-heart img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  clip-path:polygon(
-    50% 94%,
-    10% 57%,
-    3% 43%,
-    3% 27%,
-    12% 12%,
-    27% 5%,
-    41% 9%,
-    50% 23%,
-    59% 9%,
-    73% 5%,
-    88% 12%,
-    97% 27%,
-    97% 43%,
-    90% 57%
-  );
-}
-
-@keyframes heartFloat {
-  0%,100% {
-    transform:translateY(0) rotate(-2deg);
-  }
-  50% {
-    transform:translateY(-12px) rotate(2deg);
-  }
-}
-
-.eyebrow {
-  color:var(--pink);
-  letter-spacing:4px;
-  font-size:.75rem;
-  text-transform:uppercase;
-  margin-bottom:15px;
+.container {
+    width: 90%;
+    max-width: 750px;
+    margin: auto;
+    padding: 45px 0;
 }
 
 h1 {
-  font-size:clamp(2.5rem,8vw,5rem);
-  line-height:1.1;
-  margin-bottom:18px;
-  text-shadow:0 0 30px rgba(206,170,255,.25);
+    font-size: 2.4rem;
+    color: #ffd6ed;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #ff8acb;
 }
 
-h1 span {
-  display:block;
-  color:var(--purple);
+.subtitle {
+    color: #e8c8e8;
+    font-size: 1.1rem;
+    margin-bottom: 35px;
 }
 
-.hero-description {
-  max-width:620px;
-  color:var(--muted);
-  font-size:1.05rem;
-  line-height:1.9;
+/* CORAÇÃO COM IMAGEM */
+.heart-frame {
+    width: 220px;
+    height: 220px;
+    margin: 20px auto 35px;
+    position: relative;
+    filter: drop-shadow(0 0 18px #ff69b4);
 }
 
-.scroll-hint {
-  margin-top:55px;
-  color:rgba(255,255,255,.55);
-  font-size:.85rem;
-  animation:hintFloat 2s infinite;
+.heart-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: path("M 110 200 C 10 130 0 80 25 40 C 50 0 95 15 110 50 C 125 15 170 0 195 40 C 220 80 210 130 110 200 Z");
+    margin-top: 20px;
 }
 
-@keyframes hintFloat {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(7px); }
+.message {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 190, 230, 0.25);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 25px 0;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.08);
 }
 
-/* SEÇÕES */
-
-section {
-  padding:75px 0;
+.message h2 {
+    color: #ffc6e5;
+    margin-bottom: 15px;
 }
 
-.section-title {
-  text-align:center;
-  margin-bottom:35px;
+.message p {
+    line-height: 1.8;
+    color: #f5e6f1;
+    font-size: 1.05rem;
 }
 
-.section-title h2 {
-  color:var(--purple);
-  font-size:clamp(1.8rem,5vw,2.7rem);
-  margin-bottom:12px;
+.love-message {
+    font-size: 1.3rem;
+    color: #ffd3ec;
+    min-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    transition: opacity 0.5s;
 }
 
-.section-title p {
-  color:var(--muted);
+button {
+    border: none;
+    padding: 13px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff8acb, #c77dff);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 138, 203, 0.3);
 }
 
-.glass {
-  background:rgba(35,24,59,.66);
-  border:1px solid rgba(216,197,255,.19);
-  border-radius:25px;
-  padding:clamp(22px,5vw,40px);
-  backdrop-filter:blur(15px);
-  box-shadow:0 20px 60px rgba(0,0,0,.18);
+button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(255, 138, 203, 0.6);
 }
-
-/* MENSAGEM PRINCIPAL */
-
-.love-letter {
-  text-align:center;
-}
-
-.love-letter h2 {
-  color:var(--pink);
-  font-size:1.9rem;
-  margin-bottom:25px;
-}
-
-.love-letter p {
-  color:#eee5fa;
-  line-height:2;
-  margin-bottom:18px;
-  font-size:1rem;
-}
-
-.signature {
-  margin-top:30px;
-  color:var(--pink);
-  font-weight:bold;
-}
-
-/* MENSAGENS AUTOMÁTICAS */
-
-.message-section {
-  text-align:center;
-}
-
-.message-window {
-  min-height:190px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-
-.message-symbol {
-  font-size:2rem;
-  margin-bottom:20px;
-  animation:symbolGlow 3s infinite;
-}
-
-@keyframes symbolGlow {
-  0%,100% {
-    opacity:.65;
-    transform:scale(1);
-  }
-  50% {
-    opacity:1;
-    transform:scale(1.15);
-  }
-}
-
-#automaticMessage {
-  max-width:650px;
-  color:var(--white);
-  font-size:clamp(1.1rem,3vw,1.5rem);
-  line-height:1.8;
-  transition:opacity 1s ease,transform 1s ease;
-}
-
-.message-hidden {
-  opacity:0;
-  transform:translateY(12px);
-}
-
-.message-visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.message-counter {
-  margin-top:20px;
-  color:rgba(216,197,255,.6);
-  font-size:.8rem;
-}
-
-/* BOTÕES */
-
-.button {
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  padding:13px 24px;
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:999px;
-  background:linear-gradient(135deg,#9272d5,#bd7bb8);
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.button:hover {
-  transform:translateY(-4px);
-  box-shadow:0 8px 25px rgba(189,123,184,.3);
-  filter:brightness(1.1);
-}
-
-.button.secondary {
-  background:rgba(75,53,105,.65);
-}
-
-.button-area {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
-  margin-top:30px;
-}
-
-/* FRASES */
-
-.phrases {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-
-.phrase-card {
-  padding:23px;
-  border-radius:18px;
-  background:rgba(76,53,103,.35);
-  border:1px solid rgba(216,197,255,.15);
-  transition:.3s;
-}
-
-.phrase-card:hover {
-  transform:translateY(-5px);
-  background:rgba(95,67,126,.45);
-}
-
-.phrase-card .emoji {
-  font-size:1.8rem;
-  margin-bottom:12px;
-}
-
-.phrase-card h3 {
-  color:var(--pink);
-  margin-bottom:10px;
-}
-
-.phrase-card p {
-  color:var(--muted);
-  line-height:1.8;
-  font-size:.94rem;
-}
-
-/* BOTÃO DE CARINHO */
-
-.special {
-  text-align:center;
-}
-
-.special h2 {
-  color:var(--pink);
-  margin-bottom:15px;
-}
-
-#specialMessage {
-  min-height:95px;
-  display:grid;
-  place-items:center;
-  color:var(--purple);
-  font-size:1.2rem;
-  line-height:1.8;
-  padding:15px;
-}
-
-/* RODAPÉ */
 
 footer {
-  text-align:center;
-  padding:50px 15px;
-  color:rgba(216,197,255,.65);
-  font-size:.85rem;
+    margin-top: 40px;
+    color: #dcb8d9;
+    font-size: 0.9rem;
 }
 
-footer .stars {
-  font-size:1.7rem;
-  margin-bottom:15px;
-  color:var(--pink);
+a {
+    color: #ffc6e5;
+    text-decoration: none;
 }
-
-/* ESTRELAS CADENTES */
 
 .shooting-star {
-  position:fixed;
-  width:120px;
-  height:2px;
-  pointer-events:none;
-  z-index:-1;
-  background:linear-gradient(
-    90deg,
-    rgba(255,255,255,0),
-    rgba(255,255,255,.9)
-  );
-  transform:rotate(-35deg);
-  animation:shoot 1.5s linear forwards;
+    position: fixed;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    transform: rotate(-35deg);
+    animation: shoot 1.5s linear forwards;
+    pointer-events: none;
 }
 
 @keyframes shoot {
-  0% {
-    opacity:0;
-    transform:translate(0,0) rotate(-35deg);
-  }
-  15% { opacity:1; }
-  100% {
-    opacity:0;
-    transform:translate(-300px,180px) rotate(-35deg);
-  }
+    from {
+        opacity: 1;
+        transform: translate(0, 0) rotate(-35deg);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-300px, 300px) rotate(-35deg);
+    }
 }
 
-/* RESPONSIVIDADE */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 1.8rem;
+    }
 
-@media(max-width:650px) {
-  .topbar {
-    padding:16px 5%;
-  }
+    .heart-frame {
+        width: 190px;
+        height: 190px;
+    }
 
-  .phrases {
-    grid-template-columns:1fr;
-  }
-
-  .photo-heart {
-    width:145px;
-    height:145px;
-  }
-
-  section {
-    padding:55px 0;
-  }
-
-  .hero {
-    min-height:85vh;
-  }
+    .message {
+        padding: 20px;
+    }
 }
 
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation:none !important;
-    transition:none !important;
-    scroll-behavior:auto !important;
-  }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="universe"></canvas>
-<div class="background-glow"></div>
-<div class="ambient"></div>
+<canvas id="stars"></canvas>
 
-<header class="topbar">
-  <a href="index.html" class="brand">✦ Nosso Universo</a>
-  <a href="index.html" class="back">← Voltar ao nosso cantinho</a>
-</header>
+<div class="container">
 
-<main>
+    <h1>Nosso Pequeno Universo ♡</h1>
+    <p class="subtitle">Um cantinho do universo que existe só por você, Lym.</p>
 
-  <!-- INÍCIO -->
-
-  <section class="hero">
-
-    <div class="photo-heart">
-      <img
-        src="sua-imagem.jpg"
-        alt="Uma lembrança especial"
-      >
+    <div class="heart-frame">
+        <img src="sua-imagem.jpg" alt="Nossa foto">
     </div>
 
-    <div class="eyebrow">
-      um universo inteiro dedicado a você
-    </div>
-
-    <h1>
-      Meu céu tem
-      <span>seu nome, Lym ♡</span>
-    </h1>
-
-    <p class="hero-description">
-      Entre bilhões de estrelas, existem algumas que parecem
-      brilhar de um jeito diferente. E, entre todas as coisas
-      bonitas deste universo, você continua sendo uma das
-      minhas favoritas.
-      Este pequeno céu é seu, meu amor.
-    </p>
-
-    <div class="scroll-hint">
-      ↓ Continue explorando nosso universo ↓
-    </div>
-
-  </section>
-
-  <!-- CARTA -->
-
-  <section>
-    <article class="glass love-letter">
-
-      <div class="eyebrow">uma mensagem do seu Niko</div>
-
-      <h2>Se eu pudesse te dar o universo... 🌌</h2>
-
-      <p>
-        Minha Lym, às vezes fico pensando em como seria
-        impossível explicar o tamanho do carinho que sinto
-        por você. Existem sentimentos que parecem grandes
-        demais para caber em palavras, e acho que o meu
-        por você é assim.
-      </p>
-
-      <p>
-        Eu não quero apenas estar presente nos seus dias
-        felizes. Quero também que você tenha liberdade
-        para ser humana nos dias difíceis, descansar,
-        errar, aprender e recomeçar.
-      </p>
-
-      <p>
-        Quero o seu bem, mesmo nas coisas que talvez eu
-        nunca consiga resolver por você. Quero que realize
-        seus sonhos, que descubra coisas novas, que encontre
-        motivos para sorrir e que nunca precise diminuir
-        quem você é para merecer amor.
-      </p>
-
-      <p>
-        Você não precisa conquistar o mundo para me deixar
-        orgulhoso. Só de continuar tentando, vivendo e sendo
-        você, já existe algo muito bonito nisso.
-      </p>
-
-      <p>
-        Se algum dia você olhar para o céu e sentir que
-        tudo está grande demais, lembre que não precisa
-        resolver o universo inteiro hoje. Vá devagar.
-        Você também merece paz.
-      </p>
-
-      <p>
-        Eu te amo, Lym. Não apenas pelo que você representa
-        para mim, mas também pela pessoa que você é.
-      </p>
-
-      <div class="signature">
-        Com todo o amor do mundo, seu Niko. ♡
-      </div>
-
-    </article>
-  </section>
-
-  <!-- MENSAGENS AUTOMÁTICAS -->
-
-  <section class="message-section">
-
-    <div class="section-title">
-      <div class="eyebrow">pequenas estrelas de carinho</div>
-      <h2>Mensagens só para você ✨</h2>
-      <p>
-        Cada estrela guarda um pedacinho do que sinto.
-      </p>
-    </div>
-
-    <div class="glass message-window">
-
-      <div class="message-symbol">✧</div>
-
-      <p id="automaticMessage" class="message-visible">
-        Lym, você é uma das coisas mais bonitas que
-        aconteceram na minha vida. ♡
-      </p>
-
-      <div class="message-counter" id="messageCounter">
-        Uma mensagem do seu Niko
-      </div>
-
-    </div>
-
-    <div class="button-area">
-      <button class="button" id="nextMessage">
-        Outra mensagem ♡
-      </button>
-    </div>
-
-  </section>
-
-  <!-- MOTIVOS -->
-
-  <section>
-
-    <div class="section-title">
-      <div class="eyebrow">um milhão de motivos</div>
-      <h2>Coisas que desejo para você 💜</h2>
-      <p>
-        Porque amar também é desejar que alguém seja feliz.
-      </p>
-    </div>
-
-    <div class="phrases">
-
-      <article class="phrase-card">
-        <div class="emoji">🌷</div>
-        <h3>Que você floresça</h3>
+    <div class="message">
+        <h2>Para minha garota ♡</h2>
         <p>
-          Espero que você tenha espaço para crescer,
-          descobrir seus sonhos e se tornar tudo aquilo
-          que deseja ser. Nunca deixe de florescer.
+            Se o universo fosse infinito, ainda assim eu escolheria
+            passar cada pedacinho dele ao seu lado.
+            Você é minha estrela favorita, mesmo nos dias mais escuros.
         </p>
-      </article>
-
-      <article class="phrase-card">
-        <div class="emoji">🌙</div>
-        <h3>Que você tenha paz</h3>
-        <p>
-          Desejo noites tranquilas, pensamentos leves
-          e dias em que você não precise carregar
-          mais peso do que consegue.
-        </p>
-      </article>
-
-      <article class="phrase-card">
-        <div class="emoji">✨</div>
-        <h3>Que seus sonhos aconteçam</h3>
-        <p>
-          Quero ver você conquistando aquilo que deseja.
-          E espero estar por perto para comemorar
-          cada pequena vitória.
-        </p>
-      </article>
-
-      <article class="phrase-card">
-        <div class="emoji">🫶</div>
-        <h3>Que nunca falte carinho</h3>
-        <p>
-          Que você seja tratada com respeito, paciência
-          e gentileza. Que nunca precise implorar
-          pelo cuidado que merece.
-        </p>
-      </article>
-
-      <article class="phrase-card">
-        <div class="emoji">🦋</div>
-        <h3>Que você seja livre</h3>
-        <p>
-          Quero que tenha liberdade para ser você mesma,
-          mudar, aprender, experimentar e descobrir
-          novos caminhos.
-        </p>
-      </article>
-
-      <article class="phrase-card">
-        <div class="emoji">💗</div>
-        <h3>Que você se ame</h3>
-        <p>
-          Espero que consiga enxergar em si mesma
-          um pouquinho da beleza que eu vejo.
-          Você merece esse carinho também.
-        </p>
-      </article>
-
     </div>
 
-  </section>
-
-  <!-- MENSAGEM ESPECIAL -->
-
-  <section>
-
-    <div class="glass special">
-
-      <div class="eyebrow">uma surpresa para minha estrelinha</div>
-
-      <h2>Um carinho do Niko 💌</h2>
-
-      <p style="color:var(--muted)">
-        Clique quando quiser receber uma mensagem especial.
-      </p>
-
-      <div id="specialMessage">
-        Tenho um carinho infinito por você, Lym. ♡
-      </div>
-
-      <button class="button" id="specialButton">
-        Me surpreenda ✨
-      </button>
-
+    <div class="message">
+        <h2>Um pequeno lembrete...</h2>
+        <p class="love-message" id="loveMessage">
+            Você faz meus dias serem mais bonitos só por existir.
+        </p>
+        <button onclick="nextMessage()">Outra mensagem ♡</button>
     </div>
 
-  </section>
+    <div class="message">
+        <h2>Uma surpresa para você</h2>
+        <p>
+            Às vezes, palavras parecem pequenas demais para explicar
+            o quanto alguém significa. Mas ainda assim, quero tentar.
+        </p>
+        <button onclick="specialMessage()">Clique aqui, meu amor</button>
+        <p id="specialMessage" style="margin-top: 15px;"></p>
+    </div>
 
-  <!-- FINAL -->
+    <footer>
+        Feito com todo o amor do meu coração ♡
+        <br><br>
+        <a href="index.html">Voltar ao nosso pequeno universo</a>
+    </footer>
 
-  <section>
-    <article class="glass love-letter">
-
-      <div class="eyebrow">até onde o universo nos levar</div>
-
-      <h2>Você é minha estrelinha favorita. 🌟</h2>
-
-      <p>
-        Se eu pudesse escolher um lugar para guardar
-        todas as minhas lembranças bonitas, escolheria
-        um céu como este.
-      </p>
-
-      <p>
-        Cada estrela seria uma conversa, cada constelação
-        seria uma lembrança e cada brilho seria um motivo
-        pelo qual sou feliz por ter você na minha vida.
-      </p>
-
-      <p>
-        Não sei quantas estrelas existem no universo,
-        mas sei que nenhuma delas precisa competir
-        com você para ter um lugar especial no meu coração.
-      </p>
-
-      <p>
-        Obrigado por existir, minha Lym.
-        Eu quero o seu bem, sua felicidade e um futuro
-        cheio de coisas bonitas.
-      </p>
-
-      <div class="signature">
-        Eu te amo. Hoje, amanhã e em cada estrelinha
-        que iluminar nosso caminho. ♡
-      </div>
-
-    </article>
-  </section>
-
-</main>
-
-<footer>
-
-  <div class="stars">☾ ✦ ♡ ✦ ☽</div>
-
-  Feito com amor por Niko, para Lym.
-
-  <p style="margin-top:10px">
-    Mesmo em um universo infinito, você sempre será
-    minha estrelinha favorita.
-  </p>
-
-  <p style="margin-top:20px">
-    <a href="index.html" class="back">
-      ← Voltar ao nosso pequeno universo
-    </a>
-  </p>
-
-</footer>
+</div>
 
 <script>
-
-/* ==================================
-   1. SISTEMA DE ESTRELAS E UNIVERSO
-================================== */
-
-const canvas = document.getElementById("universe");
+/* ESTRELAS */
+const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
-let width;
-let height;
 let stars = [];
 
-const STAR_COUNT = 180;
-
 function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-  width = window.innerWidth;
-  height = window.innerHeight;
+    stars = [];
 
-  canvas.width = width * dpr;
-  canvas.height = height * dpr;
-
-  canvas.style.width = width + "px";
-  canvas.style.height = height + "px";
-
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-  createStars();
-}
-
-class Star {
-  constructor() {
-    this.reset(true);
-  }
-
-  reset(initial = false) {
-    this.x = Math.random() * width;
-    this.y = initial
-      ? Math.random() * height
-      : height + 10;
-
-    this.size = Math.random() * 1.8 + .3;
-    this.alpha = Math.random() * .7 + .2;
-
-    this.twinkleSpeed =
-      Math.random() * .012 + .003;
-
-    this.phase = Math.random() * Math.PI * 2;
-
-    this.drift = (Math.random() - .5) * .12;
-  }
-
-  update() {
-    this.phase += this.twinkleSpeed;
-
-    this.x += this.drift;
-
-    if (this.x < 0) this.x = width;
-    if (this.x > width) this.x = 0;
-  }
-
-  draw() {
-    const opacity =
-      this.alpha *
-      (.55 + Math.sin(this.phase) * .45);
-
-    ctx.beginPath();
-
-    ctx.arc(
-      this.x,
-      this.y,
-      this.size,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fillStyle =
-      `rgba(255,245,255,${opacity})`;
-
-    ctx.fill();
-
-    // Brilho suave nas estrelas maiores.
-    if (this.size > 1.4) {
-      ctx.beginPath();
-
-      ctx.arc(
-        this.x,
-        this.y,
-        this.size * 3,
-        0,
-        Math.PI * 2
-      );
-
-      ctx.fillStyle =
-        `rgba(202,174,255,${opacity * .12})`;
-
-      ctx.fill();
+    for (let i = 0; i < 150; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 1.5,
+            alpha: Math.random(),
+            speed: Math.random() * 0.02 + 0.005
+        });
     }
-  }
 }
 
-function createStars() {
-  stars = [];
+function animateStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push(new Star());
-  }
-}
+    stars.forEach(star => {
+        star.alpha += star.speed;
 
-function animateUniverse() {
-  ctx.clearRect(0, 0, width, height);
+        if (star.alpha >= 1 || star.alpha <= 0.2) {
+            star.speed *= -1;
+        }
 
-  stars.forEach(star => {
-    star.update();
-    star.draw();
-  });
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+    });
 
-  requestAnimationFrame(animateUniverse);
+    requestAnimationFrame(animateStars);
 }
 
 window.addEventListener("resize", resizeCanvas);
 
 resizeCanvas();
-animateUniverse();
+animateStars();
 
-
-/* ==================================
-   2. FUNDO QUE MUDA DE COR
-================================== */
-
-const skyColors = [
-  "#100b24",
-  "#17102e",
-  "#211333",
-  "#26152f",
-  "#17152e",
-  "#11152b",
-  "#1c1230"
+/* MENSAGENS AUTOMÁTICAS */
+const messages = [
+    "Você faz meus dias serem mais bonitos só por existir. ♡",
+    "Se eu pudesse escolher uma estrela, escolheria você.",
+    "Meu lugar favorito no universo é ao seu lado.",
+    "Mesmo entre bilhões de pessoas, meus olhos procurariam você.",
+    "Você é a parte mais bonita da minha história.",
+    "Eu escolheria você em todas as versões da minha vida.",
+    "Não preciso de um universo perfeito, só preciso de você nele.",
+    "Seu sorriso é uma das minhas coisas favoritas no mundo."
 ];
 
-let skyIndex = 0;
+let messageIndex = 0;
 
-function changeSky() {
-  skyIndex = (skyIndex + 1) % skyColors.length;
+function nextMessage() {
+    const element = document.getElementById("loveMessage");
 
-  document.body.style.background =
-    skyColors[skyIndex];
-}
-
-// A cada 18 segundos, o céu muda lentamente.
-setInterval(changeSky, 18000);
-
-
-/* ==================================
-   3. ESTRELAS CADENTES
-================================== */
-
-function createShootingStar() {
-  const star = document.createElement("div");
-
-  star.className = "shooting-star";
-
-  star.style.left =
-    Math.random() * 100 + "%";
-
-  star.style.top =
-    Math.random() * 55 + "%";
-
-  document.body.appendChild(star);
-
-  setTimeout(() => {
-    star.remove();
-  }, 1600);
-}
-
-// Aparecem em intervalos aleatórios.
-function scheduleShootingStar() {
-  createShootingStar();
-
-  const nextTime =
-    Math.random() * 7000 + 5000;
-
-  setTimeout(scheduleShootingStar, nextTime);
-}
-
-if (!window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches) {
-  setTimeout(scheduleShootingStar, 3000);
-}
-
-
-/* ==================================
-   4. MENSAGENS AUTOMÁTICAS
-================================== */
-
-const loveMessages = [
-
-  "Lym, se algum dia você duvidar do seu valor, lembre-se de que existe alguém que enxerga tanta beleza em você. ♡",
-
-  "Eu não quero que você seja feliz apenas comigo. Quero que seja feliz consigo mesma, com seus sonhos e com a vida que está construindo. 💜",
-
-  "Você merece um amor que não te faça questionar se é suficiente. Quero sempre te lembrar de que você merece carinho e respeito. 🌷",
-
-  "Se eu pudesse transformar meus sentimentos em estrelas, o céu inteiro não seria suficiente para representar o quanto amo você. ✨",
-
-  "Espero que você consiga realizar até aqueles sonhos que ainda tem medo de contar para alguém. Eu estarei torcendo por você. 🫶",
-
-  "Não precisa ser forte o tempo inteiro, meu amor. Você também merece descansar, receber carinho e ser cuidada. 🌙",
-
-  "Eu amo suas pequenas particularidades, seu jeito de existir e tudo aquilo que faz você ser única. 💗",
-
-  "Quero que você tenha um futuro bonito, cheio de possibilidades, descobertas e momentos que façam seu coração sorrir. 🦋",
-
-  "Mesmo quando não souber o que dizer, quero que saiba que sua existência importa e que você merece coisas boas.",
-
-  "Você não precisa mudar para merecer ser amada. Espero que nunca esqueça disso, minha estrelinha. 💜",
-
-  "Se hoje não foi um bom dia, tudo bem. Amanhã é uma nova oportunidade de respirar, tentar novamente e encontrar pequenas alegrias.",
-
-  "Eu escolheria conhecer você novamente, mesmo que precisasse atravessar milhares de galáxias para isso. 🌌",
-
-  "Quero ser alguém que acrescenta tranquilidade à sua vida, não alguém que faz você esquecer de cuidar de si mesma.",
-
-  "Que você nunca perca a vontade de descobrir o mundo. Ainda existem tantas coisas bonitas esperando por você.",
-
-  "Lym, eu tenho orgulho de você. Não apenas pelas suas conquistas, mas também por todas as vezes que continua tentando.",
-
-  "Meu desejo mais sincero é que você encontre felicidade até nos dias mais simples. Você merece uma vida bonita.",
-
-  "Se o universo é tão grande, fico feliz que nossos caminhos tenham encontrado um jeito de se cruzar. ♡",
-
-  "Você é importante para mim de maneiras que nem sempre consigo explicar. Obrigado por existir.",
-
-  "Não quero que você carregue o mundo nas costas. Quero que também tenha momentos para simplesmente viver.",
-
-  "Eu amo você, minha Lym. E desejo que a vida seja gentil com seu coração."
-];
-
-let currentMessage = 0;
-
-const automaticMessage =
-  document.getElementById("automaticMessage");
-
-const messageCounter =
-  document.getElementById("messageCounter");
-
-function showMessage(index) {
-
-  automaticMessage.classList.remove(
-    "message-visible"
-  );
-
-  automaticMessage.classList.add(
-    "message-hidden"
-  );
-
-  setTimeout(() => {
-
-    automaticMessage.textContent =
-      loveMessages[index];
-
-    messageCounter.textContent =
-      `Mensagem ${index + 1} de ${loveMessages.length} · Com amor, Niko`;
-
-    automaticMessage.classList.remove(
-      "message-hidden"
-    );
-
-    automaticMessage.classList.add(
-      "message-visible"
-    );
-
-  }, 700);
-}
-
-function nextLoveMessage() {
-
-  currentMessage =
-    (currentMessage + 1) % loveMessages.length;
-
-  showMessage(currentMessage);
-}
-
-document.getElementById("nextMessage")
-  .addEventListener("click", nextLoveMessage);
-
-// Troca automática a cada 9 segundos.
-setInterval(nextLoveMessage, 9000);
-
-
-/* ==================================
-   5. MENSAGENS ESPECIAIS ALEATÓRIAS
-================================== */
-
-const specialMessages = [
-
-  "Se eu pudesse, colocaria um pedacinho de céu no seu bolso para você nunca esquecer o quanto é especial. 💜",
-
-  "Você merece flores em dias comuns, abraços sem motivo e palavras bonitas sem precisar pedir. 🌷",
-
-  "Eu espero que você nunca precise esconder sua tristeza para não incomodar alguém. Seus sentimentos também merecem espaço.",
-
-  "Quero ver você conquistando seus sonhos e sendo feliz até nas pequenas coisas. Estarei torcendo por você. ✨",
-
-  "Se o mundo ficar barulhento demais, espero que encontre um cantinho de paz para descansar. Você merece.",
-
-  "Minha futura esposa, espero que um dia a gente olhe para trás e sorria por tudo que construímos juntos. 💍",
-
-  "Não existe uma versão perfeita de você que eu esteja esperando encontrar. Quero conhecer e amar a pessoa real que você é.",
-
-  "Você é uma das minhas lembranças favoritas, mesmo quando ainda estamos criando novas memórias. ♡",
-
-  "Eu desejo que você tenha coragem para ir atrás do que ama e tranquilidade para respeitar seu próprio tempo.",
-
-  "Um milhão de estrelinhas não seriam suficientes para escrever tudo que gostaria de dizer a você."
-];
-
-let lastSpecial = -1;
-
-document.getElementById("specialButton")
-  .addEventListener("click", () => {
-
-    let random;
-
-    do {
-      random = Math.floor(
-        Math.random() * specialMessages.length
-      );
-    } while (
-      random === lastSpecial &&
-      specialMessages.length > 1
-    );
-
-    lastSpecial = random;
-
-    const element =
-      document.getElementById("specialMessage");
-
-    element.style.opacity = "0";
-    element.style.transform = "translateY(10px)";
+    element.style.opacity = 0;
 
     setTimeout(() => {
+        messageIndex = (messageIndex + 1) % messages.length;
+        element.textContent = messages[messageIndex];
+        element.style.opacity = 1;
+    }, 400);
+}
 
-      element.textContent =
+setInterval(nextMessage, 9000);
+
+/* MENSAGEM ESPECIAL */
+const specialMessages = [
+    "Eu te amo mais do que consigo colocar em palavras. ♡",
+    "Você é meu acaso favorito.",
+    "Obrigada por existir e fazer parte da minha vida.",
+    "Se o tempo parasse, eu gostaria que fosse em um momento com você.",
+    "Meu coração sempre encontra o caminho de volta até você."
+];
+
+function specialMessage() {
+    const random = Math.floor(Math.random() * specialMessages.length);
+
+    document.getElementById("specialMessage").textContent =
         specialMessages[random];
+}
 
-      element.style.opacity = "1";
-      element.style.transform = "translateY(0)";
+/* ESTRELAS CADENTES */
+function createShootingStar() {
+    const star = document.createElement("div");
+    star.className = "shooting-star";
 
-    }, 350);
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.top = Math.random() * window.innerHeight / 2 + "px";
 
-  });
+    document.body.appendChild(star);
 
+    setTimeout(() => {
+        star.remove();
+    }, 1500);
+}
 
-/* ==================================
-   6. EFEITO DE ENTRADA
-================================== */
-
-const observer = new IntersectionObserver(
-  entries => {
-
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-
-        observer.unobserve(entry.target);
-      }
-
-    });
-
-  },
-  {
-    threshold: .12
-  }
-);
-
-document.querySelectorAll(
-  ".glass, .phrase-card"
-).forEach(element => {
-
-  element.style.opacity = "0";
-  element.style.transform = "translateY(25px)";
-  element.style.transition =
-    "opacity 1s ease, transform 1s ease";
-
-  observer.observe(element);
-
-});
-
+setInterval(createShootingStar, 5000);
 </script>
 
 </body>
