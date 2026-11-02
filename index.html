@@ -606,10 +606,10 @@ updateRelationshipCounter();
 function updateAnniversaryCountdown() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  let nextAnniversary = new Date(now.getFullYear(), 9, 11);
+  let nextAnniversary = new Date(now.getFullYear(), 9, 12);
 
   if (today > nextAnniversary) {
-    nextAnniversary = new Date(now.getFullYear() + 1, 9, 11);
+    nextAnniversary = new Date(now.getFullYear() + 1, 9, 12);
   }
 
   const daysLeft = Math.round((nextAnniversary - today) / 86400000);
